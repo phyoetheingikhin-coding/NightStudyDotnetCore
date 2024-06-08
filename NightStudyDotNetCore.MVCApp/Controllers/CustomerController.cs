@@ -11,6 +11,7 @@ namespace NightStudyDotNetCore.MVCApp.Controllers
             _context = new AppDbContext();
         }
 
+        [HttpGet]
         [ActionName("Customer")]
         public IActionResult Customer()
         {
@@ -43,7 +44,7 @@ namespace NightStudyDotNetCore.MVCApp.Controllers
 
         }
 
-
+    
         [ActionName("Save")]
         public IActionResult CustomerSave(CustomerModel item)
         {
@@ -52,7 +53,7 @@ namespace NightStudyDotNetCore.MVCApp.Controllers
             return Redirect("Customer/Customer");
         }
 
-        [HttpPost]
+  
         [ActionName("Update")]
         public IActionResult CustomerUpdate(int id, CustomerModel model)
         {
@@ -61,30 +62,30 @@ namespace NightStudyDotNetCore.MVCApp.Controllers
             {
                 return Redirect("Customer/Customer");
             }
-            else
-            {
+         
                 item.CustomerName = model.CustomerName;
                 item.PhoneNo = model.PhoneNo;
                 item.DateOfBirth = model.DateOfBirth;
                 item.Gender = model.Gender;
                 _context.SaveChanges();
-                return Redirect("/Customer");
-            }
+                return Redirect("/Customer/Customer");
+            
         }
 
+  
         [ActionName("Delete")]
         public IActionResult CustomerDelete(int id)
         {
             CustomerModel? item = _context.Customers.FirstOrDefault(item => item.CustomerId == id)!;
             if (item is null)
             {
-                return Redirect("Customer/Customer");
+                return Redirect("/Customer/Customer");
             }
             else
             {
                 _context.Remove(item);
                 _context.SaveChanges();
-                return Redirect("Customer/Customer");
+                return Redirect("/Customer/Customer");
             }
         }
     }
