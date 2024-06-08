@@ -1,0 +1,21 @@
+﻿@model CustomerModel
+<form action="/Customer/Update/@Model.CustomerId" method="post">
+    <div class="mb-3">
+        <label class="form-label">CustomerName</label>
+        <input type="text" class="form-control" id="CustomerName" name="CustomerName" value="@Model.CustomerName">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">PhoneNo</label>
+        <input type="text" class="form-control" id="PhoneNo" name="PhoneNo" value="@Model.PhoneNo">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <input type="text" class="form-control" id="Gender" name="Gender" value="@Model.Gender">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">DateOfBirth</label>
+        <input type="text" class="form-control" id="DateOfBirth" name="DateOfBirth" value="@Model.DateOfBirth">
+    </div>
+    <a href="Customer/Customer" class="btn btn-dark">Back</a>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
