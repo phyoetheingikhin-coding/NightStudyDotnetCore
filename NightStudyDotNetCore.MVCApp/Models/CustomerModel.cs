@@ -7,7 +7,7 @@ namespace NightStudyDotNetCore.MVCApp.Models
     public class CustomerModel
     {
         [Key]
-        public int CustomerId {  get; set; }
+        public int CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string PhoneNo { get; set; }
         public string Gender { get; set; }

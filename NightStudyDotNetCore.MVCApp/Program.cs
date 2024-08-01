@@ -4,7 +4,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
+builder.Services.AddScoped<HttpClient>();
+builder.Services.AddScoped(n => new HttpClient()
+{
+    BaseAddress = new Uri(builder.Configuration.GetValue<string>("ApiUrl")!)
+});
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
